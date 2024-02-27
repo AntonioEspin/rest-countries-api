@@ -1,0 +1,7 @@
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--Very-Light-Gray);
+  padding: 0 15px;
+}

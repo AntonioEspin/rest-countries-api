@@ -1,8 +1,30 @@
 .header {
   width: 100%;
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
+  box-shadow: 0 0 10px var(--Dark-Gray);
+  background-color: white;
+}
+
+.header h1, .header span {
+  font-size: 1.6rem;
+}
+
+.header span {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.header-darkMode {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-darkMode > svg {
+  width: 16px;
+  height: 16px;
 }
