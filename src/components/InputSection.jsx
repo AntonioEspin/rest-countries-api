@@ -1,10 +1,21 @@
+/* eslint-disable react/prop-types */
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import '../styles/InputSection.css'
+import { useRef } from "react";
 
-export function InputSection () {
+export function InputSection ({search, setSearch}) {
+
+  const inputRef = useRef()
+
+  const handleInput = (e) => {
+    e.preventDefault()
+    const value = inputRef.current.value
+    console.log(value)
+    setSearch(value)
+  }
   return (
-    <form className="form">
-      <input type="text" placeholder="Search for a country..."/>
+    <form className="form" onSubmit={handleInput}>
+      <input ref={inputRef} type="text" placeholder="Search for a country..."/>
       
       <nav className="nav-filter">
         <div className="tag-name-filter">

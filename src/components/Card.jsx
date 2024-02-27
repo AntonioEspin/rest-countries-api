@@ -8,9 +8,9 @@ export function Card ({img, name, population, region, capital}) {
       <div className="card-info">
         <h3>{name}</h3>
         <div className="info">
-          <span>{population}</span>
-          <span>{region}</span>
-          <span>{capital}</span>
+          <p>Population: <span>{population}</span></p>
+          <p>Region: <span>{region}</span></p>
+          <p>Capital: <span>{capital}</span></p>
         </div>
       </div>
     </article>

@@ -3,26 +3,23 @@ import {MainSection} from './components/MainSection'
 import { Header } from './components/Header'
 import { InputSection } from './components/InputSection'
 import { Cards } from './components/Cards'
-import data from './mocks/data.json'
+import { useCountries } from './hooks/useCountries'
+import { useState } from 'react'
 
 function App() {
 
-  console.log(data)
-  
-  const mappedInfo = data.map(element => ({
-    id: element.alpha3Code,
-    flag: element.flag,
-    name: element.name,
-    population: element.population,
-    region: element.region,
-    capital: element.capital
-  }))
+  const [search, setSearch] = useState('')
+
+  const {mappedInfo} = useCountries({search})
 
   return (
     <>
       <Header/>
       <MainSection>
-        <InputSection/>
+        <InputSection
+          search={search}
+          setSearch={setSearch}
+        />
         <Cards data={mappedInfo}/>
       </MainSection>
     </>
