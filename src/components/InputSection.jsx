@@ -1,14 +1,17 @@
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import '../styles/InputSection.css'
+
 export function InputSection () {
   return (
-    <form action="">
+    <form className="form">
       <input type="text" placeholder="Search for a country..."/>
       
-      <nav>
-        <div>
+      <nav className="nav-filter">
+        <div className="tag-name-filter">
           <span>Filter by Region</span>
-          <img src="" alt="" />
+          <MdOutlineKeyboardArrowDown/>
         </div>
-        <ul>
+        <ul className="options">
           <li>Africa</li>
           <li>America</li>
           <li>Asia</li>
