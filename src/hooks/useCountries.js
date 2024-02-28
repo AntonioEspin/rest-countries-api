@@ -1,13 +1,13 @@
 // import localData from '../mocks/data.json'
-import { useEffect, useState } from 'react'
-import { getData, getDataByRegion } from '../services/getData'
+import { useCallback, useEffect, useState } from 'react'
+import { getData } from '../services/getData'
 
-export function useCountries ({search, searchByRegion}) {
+export function useCountries ({search, filterByRegion}) {
 
   const [countries, setCountries] = useState([])
   const [error, setError] = useState(null)
 
-  const getCountries = async () => {
+  const getCountries = useCallback(async () => {
 
     try {
       setError(null)
@@ -16,25 +16,19 @@ export function useCountries ({search, searchByRegion}) {
     } catch(e) {
       setError(e)
     }
-  }
+  }, [search])
 
-  const getCountriesByRegion = async () => {
-    try {
-      setError(null)
-      const newCountries = await getDataByRegion({searchByRegion})
-      setCountries(newCountries)
-    } catch(e) {
-      setError(e)
-    }
-  }
+
+  const countriesFiltered = 
+    filterByRegion !== 'all'
+      ? [...countries].filter(country => {
+        return filterByRegion.toLowerCase() === country.region.toLowerCase()
+      })
+      : countries
 
   useEffect(()=>{
     getCountries()
-  }, [search])
+  }, [search, getCountries])
 
-  useEffect(()=>{
-    getCountriesByRegion()
-  },[searchByRegion])
-
-  return {countries, getCountries, getCountriesByRegion, error}
+  return {countries, countriesFiltered, getCountries, error}
 }

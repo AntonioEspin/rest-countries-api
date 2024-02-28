@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import '../styles/InputSection.css'
 
-export function InputSection ({search,searchByRegion, setSearch, setSearchByRegion, getCountries, getCountriesByRegion, error}) {
+export function InputSection ({search, setSearch, setFilterByRegion, getCountries, error}) {
 
   const [openNav, setOpenNav] = useState(false)
 
@@ -26,11 +26,9 @@ export function InputSection ({search,searchByRegion, setSearch, setSearchByRegi
     getCountries({value})
   }
 
-  const handleSearchByRegion = (e) => {
+  const handleFilterByRegion = (e) => {
     const value = e.target.innerText.toLowerCase()
-    console.log(value)
-    setSearchByRegion(value)
-    getCountriesByRegion({value})
+    setFilterByRegion(value)
     setOpenNav(!openNav)
   }
 
@@ -45,11 +43,12 @@ export function InputSection ({search,searchByRegion, setSearch, setSearchByRegi
           <MdOutlineKeyboardArrowDown onClick={handleOpenNav}/>
         </div>
         <ul className={`options ${openNav ? 'active-nav' : ''}`}>
-          <li onClick={handleSearchByRegion}>Africa</li>
-          <li onClick={handleSearchByRegion}>America</li>
-          <li onClick={handleSearchByRegion}>Asia</li>
-          <li onClick={handleSearchByRegion}>Europe</li>
-          <li onClick={handleSearchByRegion}>Oceania</li>
+          <li onClick={handleFilterByRegion}>All</li>
+          <li onClick={handleFilterByRegion}>Africa</li>
+          <li onClick={handleFilterByRegion}>Americas</li>
+          <li onClick={handleFilterByRegion}>Asia</li>
+          <li onClick={handleFilterByRegion}>Europe</li>
+          <li onClick={handleFilterByRegion}>Oceania</li>
         </ul>
       </nav>
     </form>
