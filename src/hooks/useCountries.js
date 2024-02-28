@@ -1,18 +1,26 @@
 // import localData from '../mocks/data.json'
-import { GetData } from '../services/getData'
+import { useEffect, useState } from 'react'
+import { getData } from '../services/getData'
 
 export function useCountries ({search}) {
 
-  const {data} =  GetData({search})
+  const [countries, setCountries] = useState([])
+  const [error, setError] = useState(null)
 
-  const mappedInfo = data?.map(element => ({
-    id: element.cca3,
-    flag: element.flags.svg,
-    name: element.name.common,
-    population: element.population,
-    region: element.region,
-    capital: element.capital
-  }))
+  const getCountries = async () => {
 
-  return {mappedInfo}
+    try {
+      setError(null)
+      const newCountries = await getData({search})
+      setCountries(newCountries)
+    } catch(e) {
+      setError(e)
+    }
+  }
+
+  useEffect(()=>{
+    getCountries()
+  }, [search])
+
+  return {countries, getCountries, error}
 }

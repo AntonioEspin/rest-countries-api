@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+export async function getData ({search}) {
+  const API = search ? `https://restcountries.com/v3.1/name/${search}` : `https://restcountries.com/v3.1/all`
 
-export function GetData ({search}) {
-  const API = search ? `https://restcountries.com/v3.1/name/${search}?fullText=true` : `https://restcountries.com/v3.1/all`
-
-  console.log(API)
-  const [data, setData] = useState([])
-
-  useEffect(()=>{
-    fetch(API)
-      .then(response => response.json())
-      .then(info => setData(info))
-      .catch(error => console.log(error))
-  },[API, search])
-
-  return {data}
+  try {
+    const response = await fetch(API)
+    const data = await response.json()
+  
+    return data?.map(element => ({
+      id: element.cca3,
+      flag: element.flags.svg,
+      name: element.name.common,
+      population: element.population,
+      region: element.region,
+      capital: element.capital
+    }))
+  } catch (e) {
+    throw new Error()
+  }
 }

@@ -10,7 +10,11 @@ function App() {
 
   const [search, setSearch] = useState('')
 
-  const {mappedInfo} = useCountries({search})
+  const {countries, getCountries, error} = useCountries({search})
+
+  // useEffect(()=>{
+  //   getCountries()
+  // },[])
 
   return (
     <>
@@ -19,8 +23,10 @@ function App() {
         <InputSection
           search={search}
           setSearch={setSearch}
+          getCountries={getCountries}
+          error={error}
         />
-        <Cards data={mappedInfo}/>
+        <Cards data={countries}/>
       </MainSection>
     </>
   )

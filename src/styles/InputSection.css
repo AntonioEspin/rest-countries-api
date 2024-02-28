@@ -15,6 +15,12 @@
     sans-serif;
 }
 
+.form > p {
+  text-align: center;
+  font-size: 1.4rem;
+  color: red;
+}
+
 .form input::placeholder {
   color: var(--Dark-Gray);
   opacity: 0.5;

@@ -9,7 +9,7 @@ export function Cards ({data}) {
     <section className="cards-container">
       {
         hasInfo
-          ? data.map(element => (
+          ? data?.map(element => (
               <Card
                 key={element.id}
                 img={element.flag}

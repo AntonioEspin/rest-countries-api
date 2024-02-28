@@ -4,5 +4,6 @@
   flex-direction: column;
   background-color: var(--Very-Light-Gray);
   padding: 0 15px;
+  padding-bottom: 50px;
   gap: 40px;
 }
