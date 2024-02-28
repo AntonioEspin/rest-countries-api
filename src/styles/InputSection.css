@@ -13,6 +13,7 @@
   padding: 0 30px;
   font-family: "Nunito Sans",
     sans-serif;
+    outline: none;
 }
 
 .form > p {
@@ -71,4 +72,9 @@
 
 .options li {
   list-style: none;
+  cursor: pointer;
+}
+
+.active-nav {
+  display: flex;
 }

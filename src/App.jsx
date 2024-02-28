@@ -9,12 +9,9 @@ import { useState } from 'react'
 function App() {
 
   const [search, setSearch] = useState('')
+  const [searchByRegion, setSearchByRegion] = useState('')
 
-  const {countries, getCountries, error} = useCountries({search})
-
-  // useEffect(()=>{
-  //   getCountries()
-  // },[])
+  const {countries, getCountries, getCountriesByRegion, error} = useCountries({search, searchByRegion})
 
   return (
     <>
@@ -22,8 +19,11 @@ function App() {
       <MainSection>
         <InputSection
           search={search}
+          searchByRegion={searchByRegion}
           setSearch={setSearch}
+          setSearchByRegion={setSearchByRegion}
           getCountries={getCountries}
+          getCountriesByRegion={getCountriesByRegion}
           error={error}
         />
         <Cards data={countries}/>

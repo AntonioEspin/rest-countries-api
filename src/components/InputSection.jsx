@@ -1,11 +1,23 @@
 /* eslint-disable react/prop-types */
+import { useRef, useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import '../styles/InputSection.css'
-import { useRef } from "react";
 
-export function InputSection ({search, setSearch, getCountries, error}) {
+export function InputSection ({search,searchByRegion, setSearch, setSearchByRegion, getCountries, getCountriesByRegion, error}) {
+
+  const [openNav, setOpenNav] = useState(false)
 
   const inputRef = useRef()
+
+  const handleOpenNav = () => {
+    setOpenNav(!openNav)
+  }
+
+  const handleOnChange = (e) => {
+    const value = e.target.value
+    setSearch(value)
+    getCountries({value})
+  }
 
   const handleInput = (e) => {
     e.preventDefault()
@@ -13,22 +25,31 @@ export function InputSection ({search, setSearch, getCountries, error}) {
     setSearch(value)
     getCountries({value})
   }
+
+  const handleSearchByRegion = (e) => {
+    const value = e.target.innerText.toLowerCase()
+    console.log(value)
+    setSearchByRegion(value)
+    getCountriesByRegion({value})
+    setOpenNav(!openNav)
+  }
+
   return (
     <form className="form" onSubmit={handleInput}>
-      <input ref={inputRef} type="text" placeholder="Search for a country..."/>
+      <input value={search} ref={inputRef} type="text" placeholder="Search for a country..." onChange={handleOnChange}/>
       {error ? <p>No hay información disponible</p> : ''}
       
       <nav className="nav-filter">
         <div className="tag-name-filter">
           <span>Filter by Region</span>
-          <MdOutlineKeyboardArrowDown/>
+          <MdOutlineKeyboardArrowDown onClick={handleOpenNav}/>
         </div>
-        <ul className="options">
-          <li>Africa</li>
-          <li>America</li>
-          <li>Asia</li>
-          <li>Europe</li>
-          <li>Oceania</li>
+        <ul className={`options ${openNav ? 'active-nav' : ''}`}>
+          <li onClick={handleSearchByRegion}>Africa</li>
+          <li onClick={handleSearchByRegion}>America</li>
+          <li onClick={handleSearchByRegion}>Asia</li>
+          <li onClick={handleSearchByRegion}>Europe</li>
+          <li onClick={handleSearchByRegion}>Oceania</li>
         </ul>
       </nav>
     </form>
