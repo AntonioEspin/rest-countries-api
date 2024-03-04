@@ -2,7 +2,7 @@
 import { Card } from './Card'
 import '../styles/Cards.css'
 
-export function Cards ({data, dataFiltered}) {
+export function Cards ({data, dataFiltered, setInfoSelected, setCardSelected}) {
   const hasInfo = dataFiltered.length > 0
 
   return (
@@ -12,21 +12,17 @@ export function Cards ({data, dataFiltered}) {
           ? dataFiltered?.map(element => (
               <Card
                 key={element.id}
-                img={element.flag}
-                name={element.name}
-                population={element.population}
-                region={element.region}
-                capital={element.capital}
+                allInfo={{...element}}
+                setInfoSelected={setInfoSelected}
+                setCardSelected={setCardSelected}
               />
             ))
           : data?.map(element => (
               <Card
                 key={element.id}
-                img={element.flag}
-                name={element.name}
-                population={element.population}
-                region={element.region}
-                capital={element.capital}
+                allInfo={{...element}}
+                setInfoSelected={setInfoSelected}
+                setCardSelected={setCardSelected}
               />
             )) 
       }
