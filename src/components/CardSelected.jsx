@@ -11,7 +11,7 @@ export function CardSelected ({setCardSelected, infoSelected}) {
   // const valuesLanguages = Object.keys(languages).map(key => languages[key]).join(', ')
   const valuesLanguages = Object.values(languages).join(", ");
 
-  const valuesCountriesBorder = 'undefined' ? <span>not information</span> : countriesBorder.map(country => (<span key={country}>{country}</span>))
+  const valuesCountriesBorder = countriesBorder === undefined ? <span>not information</span> : countriesBorder.map(country => (<span key={country}>{country}</span>))
 
   const handleBack = () => {
     setCardSelected(prevStatus => !prevStatus)

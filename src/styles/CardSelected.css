@@ -80,3 +80,26 @@
   border: 1px solid var(--Dark-Gray);
   border-radius: 5px;
 }
+
+@media (width < 850px) {
+  .cardSelected {
+    padding: 0 30px;
+  }
+
+  .cardSelected-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+  }
+
+  .container-info > aside {
+    flex-direction: column;
+  }
+
+  .countries-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+}
