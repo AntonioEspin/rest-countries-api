@@ -1,0 +1,82 @@
+.cardSelected {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 80px;
+}
+
+.cardSelected > button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-family: "Nunito Sans", sans-serif;
+  box-shadow: 1px 2px 10px -4px var(--Dark-Gray);
+  cursor: pointer;
+}
+
+.cardSelected-info {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.cardSelected-info > figure {
+  width: 100%;
+  flex: 1;
+}
+
+.cardSelected-info > figure img {
+  width: inherit;
+}
+
+
+.container-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.container-info h2 {
+  font-size: 3rem;
+}
+
+.container-info > aside {
+  display: flex;
+  gap: 30px;
+}
+
+.first-info, .second-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.6rem;
+}
+
+.countries-info {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.countries-info strong {
+  margin-right: 10px;
+}
+
+.countries-border {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.countries-border span {
+  padding: 3px 25px;
+  border: 1px solid var(--Dark-Gray);
+  border-radius: 5px;
+}

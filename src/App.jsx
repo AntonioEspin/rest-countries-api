@@ -15,8 +15,6 @@ function App() {
   const [cardSelected, setCardSelected] = useState(false)
   const [infoSelected, setInfoSelected] = useState({})
 
-  console.log(infoSelected)
-
   const {countries, countriesFiltered, getCountries, error} = useCountries({search, filterByRegion, cardSelected})
 
   return (
